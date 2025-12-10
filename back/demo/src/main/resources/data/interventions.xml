@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<interventions xmlns:ns2="http://example.com/personne">
+    <intervention urgence="Moyenne" priorite="Moyenne">
+        <datePrevue>2025-12-10</datePrevue>
+        <service>voirie</service>
+        <idInter>2</idInter>
+        <localisation>tuni</localisation>
+        <statut>planifiée</statut>
+        <type>Réparation</type>
+        <efficacite>Moyenne</efficacite>
+        <techniciens>
+            <technicien>
+                <ns2:id>2</ns2:id>
+                <ns2:nom>Trabelsi</ns2:nom>
+                <ns2:prenom>Nourhen</ns2:prenom>
+                <interventions/>
+            </technicien>
+        </techniciens>
+    </intervention>
+    <intervention urgence="Moyenne" priorite="Moyenne">
+        <datePrevue>2025-12-03</datePrevue>
+        <service>securite</service>
+        <idInter>3</idInter>
+        <localisation>mahdi</localisation>
+        <statut>planifiée</statut>
+        <type>Réparation</type>
+        <efficacite>Moyenne</efficacite>
+        <techniciens>
+            <technicien>
+                <ns2:id>1</ns2:id>
+                <ns2:nom>Ben Salah</ns2:nom>
+                <ns2:prenom>Aya</ns2:prenom>
+                <ns2:specialite>Informatique</ns2:specialite>
+                <interventions/>
+            </technicien>
+        </techniciens>
+    </intervention>
+    <intervention urgence="Moyenne" priorite="Moyenne">
+        <datePrevue>2025-12-11</datePrevue>
+        <service>voirie</service>
+        <idInter>4</idInter>
+        <localisation>tunis</localisation>
+        <statut>en_cours</statut>
+        <type>Rép</type>
+        <efficacite>Moyenne</efficacite>
+        <techniciens>
+            <technicien>
+                <ns2:id>2</ns2:id>
+                <ns2:nom>Trabelsi</ns2:nom>
+                <ns2:prenom>Nourhen</ns2:prenom>
+                <ns2:specialite>Électricité</ns2:specialite>
+                <interventions/>
+            </technicien>
+        </techniciens>
+    </intervention>
+    <intervention urgence="Élevée" priorite="Élevée">
+        <datePrevue>2025-12-25</datePrevue>
+        <service>transport</service>
+        <idInter>5</idInter>
+        <localisation>tunis</localisation>
+        <statut>planifiée</statut>
+        <type>Réparatio</type>
+        <efficacite>Moyenne</efficacite>
+        <techniciens>
+            <technicien>
+                <ns2:id>2</ns2:id>
+                <ns2:nom>Trabelsi</ns2:nom>
+                <ns2:prenom>Nourhen</ns2:prenom>
+                <interventions/>
+            </technicien>
+        </techniciens>
+    </intervention>
+    <intervention urgence="Moyenne" priorite="Moyenne">
+        <datePrevue>2025-12-04</datePrevue>
+        <service>transport</service>
+        <idInter>7</idInter>
+        <localisation>mahdia</localisation>
+        <statut>planifiée</statut>
+        <type>Réparatio</type>
+        <efficacite>Moyenne</efficacite>
+        <techniciens>
+            <technicien>
+                <ns2:id>1</ns2:id>
+                <ns2:nom>Ben Salah</ns2:nom>
+                <ns2:prenom>Aya</ns2:prenom>
+                <ns2:specialite>Informatique</ns2:specialite>
+                <interventions/>
+            </technicien>
+            <technicien>
+                <ns2:id>2</ns2:id>
+                <ns2:nom>Trabelsi</ns2:nom>
+                <ns2:prenom>Nourhen</ns2:prenom>
+                <ns2:specialite>Électricité</ns2:specialite>
+                <interventions/>
+            </technicien>
+        </techniciens>
+    </intervention>
+</interventions>

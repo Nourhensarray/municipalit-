@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://example.com/personne"
+    targetNamespace="http://example.com/personne"
+    elementFormDefault="qualified">
+
+  <!-- Personne de base -->
+  <xs:complexType name="PersonneType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="nom" type="xs:string"/>
+      <xs:element name="prenom" type="xs:string"/>
+      <xs:element name="email" type="xs:string"/>
+      <xs:element name="adresse" type="xs:string"/>
+      <xs:element name="telephone" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Technicien hérite de Personne -->
+  <xs:complexType name="TechnicienType">
+    <xs:complexContent>
+      <xs:extension base="tns:PersonneType">
+        <xs:sequence>
+          <xs:element name="specialite" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- Conteneur pour les techniciens -->
+  <xs:element name="techniciens">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="technicien" type="tns:TechnicienType" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+
+    <!-- Clé unique sur id -->
+    <xs:key name="technicienKey">
+      <xs:selector xpath="tns:technicien"/>
+      <xs:field xpath="tns:id"/>
+    </xs:key>
+  </xs:element>
+
+</xs:schema>

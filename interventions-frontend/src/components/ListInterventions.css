@@ -1,0 +1,99 @@
+/* Container général */
+div {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f8f9fa; /* Fond léger */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Titres */
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+/* Boutons */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+  margin-right: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Link bouton */
+a button {
+  text-decoration: none;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Entête de table */
+thead {
+  background-color: #343a40;
+  color: white;
+}
+
+thead th {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+/* Corps de table */
+tbody td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+/* Lignes impaires */
+tbody tr:nth-child(odd) {
+  background-color: #f1f3f5;
+}
+
+/* Hover sur ligne */
+tbody tr:hover {
+  background-color: #e9ecef;
+  transition: background-color 0.2s ease-in-out;
+}
+/* InterventionList.css ou ton fichier css */
+.action-buttons {
+  display: flex;       /* Met les boutons sur la même ligne */
+  gap: 10px;           /* Espace de 10px entre chaque bouton */
+}
+
+.action-buttons button {
+  padding: 5px 10px;  /* Optionnel : pour agrandir la zone cliquable */
+  cursor: pointer;
+}
+
+/* Actions */
+td button {
+  font-size: 0.85rem;
+  padding: 5px 10px;
+}
+

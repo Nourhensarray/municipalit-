@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users xmlns="http://example.com/personne">
+    <responsable>
+        <id>1</id>
+        <nom>Ben Ali</nom>
+        <prenom>Youssef</prenom>
+        <email>youssef@mairie.tn</email>
+        <adresse>Sfax</adresse>
+        <telephone>22223333</telephone>
+        <service>Voirie</service>
+        <password>1234</password>
+    </responsable>
+
+    <responsable>
+        <id>2</id>
+        <nom>Karoui</nom>
+        <prenom>Rami</prenom>
+        <email>rami@mairie.tn</email>
+        <adresse>Tunis</adresse>
+        <telephone>99887766</telephone>
+        <service>transport</service>
+        <password>abcd</password>
+    </responsable>
+</users>

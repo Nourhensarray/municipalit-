@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tech="http://example.com/personne"
+    xmlns:tns="http://example.com/interventions"
+    targetNamespace="http://example.com/interventions"
+    elementFormDefault="qualified">
+
+    <!-- IMPORT DU SCHÉMA PERSONNE/TECHNICIEN -->
+    <xs:import namespace="http://example.com/personne" 
+               schemaLocation="personne.xsd"/>
+
+    <!-- Élément racine -->
+    <xs:element name="interventions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="intervention" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="idInter" type="xs:int"/>
+                            <xs:element name="datePrevue" type="xs:date"/>
+                            <xs:element name="service" type="xs:string"/>
+                            <xs:element name="localisation" type="xs:string"/>
+                            <xs:element name="statut" type="xs:string"/>
+                            <xs:element name="type" type="xs:string"/>
+                            <xs:element name="efficacite" type="xs:string"/>
+
+                            <xs:element name="techniciens">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="technicien" type="tech:TechnicienType" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+
+                        <!-- Attributs de l'intervention -->
+                        <xs:attribute name="urgence" type="xs:string" use="required"/>
+                        <xs:attribute name="priorite" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+
+        <!-- Clé primaire intervention -->
+        <xs:key name="interventionKey">
+            <xs:selector xpath="tns:intervention"/>
+            <xs:field xpath="tns:idInter"/>
+        </xs:key>
+
+        <!-- Référence vers la clé technicienKey du fichier personne.xsd -->
+        <xs:keyref name="technicienRefKey" refer="tech:technicienKey">
+            <xs:selector xpath="tns:intervention/tns:idTechniciens/tns:id"/>
+            <xs:field xpath="."/>
+        </xs:keyref>
+    </xs:element>
+
+</xs:schema>

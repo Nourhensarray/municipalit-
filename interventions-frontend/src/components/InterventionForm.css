@@ -1,0 +1,167 @@
+/* ===== Container général ===== */
+.intervention-form-container {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+/* ===== Titres ===== */
+.intervention-form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333333;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+/* ===== Form fields ===== */
+.intervention-form-container form div {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.intervention-form-container label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #555555;
+}
+
+.intervention-form-container input[type="text"],
+.intervention-form-container input[type="date"],
+.intervention-form-container select {
+  padding: 10px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.intervention-form-container input[type="text"]:focus,
+.intervention-form-container input[type="date"]:focus,
+.intervention-form-container select:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+/* ===== Techniciens (cartes checkbox) ===== */
+.techniciens-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.techniciens-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.technicien-card {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 150px;
+}
+
+.technicien-card:hover {
+  border-color: #4a90e2;
+  background-color: #e6f0ff;
+}
+
+.technicien-card input[type="checkbox"] {
+  margin-right: 8px;
+  accent-color: #4a90e2;
+}
+
+.technicien-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.technicien-info .specialite {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+}
+.measure-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.measure-section label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.measure-btn {
+  width: fit-content;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90e2;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.measure-btn:hover {
+  background-color: #357ABD;
+}
+
+/* ===== Boutons ===== */
+.intervention-form-container button {
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #4a90e2;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.intervention-form-container button:hover {
+  background-color: #357ABD;
+  transform: translateY(-2px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .intervention-form-container {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .intervention-form-container input,
+  .intervention-form-container select,
+  .intervention-form-container button {
+    font-size: 14px;
+  }
+
+  .techniciens-list {
+    gap: 6px;
+  }
+
+  .technicien-card {
+    min-width: 120px;
+    padding: 6px 10px;
+  }
+  
+}

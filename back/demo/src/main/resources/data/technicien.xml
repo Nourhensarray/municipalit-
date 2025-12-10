@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:techniciens xmlns:ns2="http://example.com/personne">
+    <ns2:technicien>
+        <ns2:id>1</ns2:id>
+        <ns2:nom>Ben Salah</ns2:nom>
+        <ns2:prenom>Aya</ns2:prenom>
+        <ns2:email>aya@example.com</ns2:email>
+        <ns2:adresse>Rue de Sfax, Tunisie</ns2:adresse>
+        <ns2:telephone>12345678</ns2:telephone>
+        <ns2:specialite>Informatique</ns2:specialite>
+        <interventions>
+            <intervention urgence="Moyenne" priorite="Moyenne">
+                <datePrevue>2025-12-04</datePrevue>
+                <idInter>7</idInter>
+                <localisation>mahdia</localisation>
+                <statut>planifiée</statut>
+                <type>Réparatio</type>
+                <efficacite>Moyenne</efficacite>
+                <techniciens>
+                    <technicien>
+                        <ns2:id>1</ns2:id>
+                        <ns2:nom>Ben Salah</ns2:nom>
+                        <ns2:prenom>Aya</ns2:prenom>
+                        <ns2:specialite>Informatique</ns2:specialite>
+                        <interventions/>
+                    </technicien>
+                    <technicien>
+                        <ns2:id>2</ns2:id>
+                        <ns2:nom>Trabelsi</ns2:nom>
+                        <ns2:prenom>Nourhen</ns2:prenom>
+                        <ns2:specialite>Électricité</ns2:specialite>
+                        <interventions/>
+                    </technicien>
+                </techniciens>
+            </intervention>
+        </interventions>
+    </ns2:technicien>
+    <ns2:technicien>
+        <ns2:id>2</ns2:id>
+        <ns2:nom>Trabelsi</ns2:nom>
+        <ns2:prenom>Nourhen</ns2:prenom>
+        <ns2:email>nourhen@example.com</ns2:email>
+        <ns2:adresse>Rue de Sousse, Tunisie</ns2:adresse>
+        <ns2:telephone>87654321</ns2:telephone>
+        <ns2:specialite>Électricité</ns2:specialite>
+        <interventions>
+            <intervention urgence="Moyenne" priorite="Moyenne">
+                <datePrevue>2025-12-04</datePrevue>
+                <idInter>7</idInter>
+                <localisation>mahdia</localisation>
+                <statut>planifiée</statut>
+                <type>Réparatio</type>
+                <efficacite>Moyenne</efficacite>
+                <techniciens>
+                    <technicien>
+                        <ns2:id>1</ns2:id>
+                        <ns2:nom>Ben Salah</ns2:nom>
+                        <ns2:prenom>Aya</ns2:prenom>
+                        <ns2:specialite>Informatique</ns2:specialite>
+                        <interventions/>
+                    </technicien>
+                    <technicien>
+                        <ns2:id>2</ns2:id>
+                        <ns2:nom>Trabelsi</ns2:nom>
+                        <ns2:prenom>Nourhen</ns2:prenom>
+                        <ns2:specialite>Électricité</ns2:specialite>
+                        <interventions/>
+                    </technicien>
+                </techniciens>
+            </intervention>
+        </interventions>
+    </ns2:technicien>
+</ns2:techniciens>

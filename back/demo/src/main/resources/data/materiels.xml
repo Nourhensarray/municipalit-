@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<materiels>
+    <materiel>
+        <idM>1</idM>
+        <categorie>Outils</categorie>
+        <dateAchat>2025-01-10</dateAchat>
+        <etat>Neuf</etat>
+        <valeur>100</valeur>
+    </materiel>
+    <materiel>
+        <idM>2</idM>
+        <categorie>Pièces</categorie>
+        <dateAchat>2024-11-05</dateAchat>
+        <etat>Usé</etat>
+        <valeur>50</valeur>
+    </materiel>
+</materiels>

@@ -16,7 +16,7 @@ public class Intervention {
     private LocalDate datePrevue;
 
     @XmlElement(name = "idInter")
-    private int idInter;
+    private long idInter;
     @XmlElement(name = "service")
     private String service;
     @XmlElement(name = "localisation")
@@ -34,7 +34,9 @@ public class Intervention {
     @XmlElementWrapper(name = "techniciens")
     @XmlElement(name = "technicien")
     private List<Technicien> techniciens;
-
+    @XmlElementWrapper(name = "materiels")
+    @XmlElement(name = "materiel")
+    private List<Materiel> materiels;
     @XmlAttribute(name = "urgence")
     private String urgence;
 
@@ -64,8 +66,8 @@ public class Intervention {
     public LocalDate getDatePrevue() { return datePrevue; }
     public void setDatePrevue(LocalDate datePrevue) { this.datePrevue = datePrevue; }
 
-    public int getIdInter() { return idInter; }
-    public void setIdInter(int idInter) { this.idInter = idInter; }
+    public long getIdInter() { return idInter; }
+    public void setIdInter(long idInter) { this.idInter = idInter; }
 
     public String getLocalisation() { return localisation; }
     public void setLocalisation(String localisation) { this.localisation = localisation; }
@@ -89,4 +91,12 @@ public class Intervention {
     public void setPriorite(String priorite) { this.priorite = priorite; }
     public String getService() { return service; }
     public void setService(String priorite) { this.service = priorite; }
+    public List<Materiel> getMateriels() {
+    return materiels;
+}
+
+public void setMateriels(List<Materiel> materiels) {
+    this.materiels = materiels;
+}
+
 }

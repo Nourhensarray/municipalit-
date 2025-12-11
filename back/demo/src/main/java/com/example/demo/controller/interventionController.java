@@ -25,18 +25,13 @@ public class interventionController {
     /**
      * 🔒 GET — interventions réservées au ResponsableMunicipal connecté
      */
-    @GetMapping("/my-service")
-    public List<Intervention> getByService(HttpServletRequest request) throws Exception {
+   @GetMapping("/my-service")
+public List<Intervention> getByService(HttpServletRequest request) throws Exception {
+    String token = jwtService.extractJwtFromRequest(request);
+    String service = jwtService.extractService(token);
+    return xmlServiceJaxb.getInterventionsByService(service);
+}
 
-        // 1️⃣ Récupérer le token JWT
-        String token = jwtService.extractJwtFromRequest(request);
-
-        // 2️⃣ Extraire le service du responsable municipal
-        String service = jwtService.extractService(token);
-
-        // 3️⃣ Retourner uniquement les interventions de son service
-        return xmlServiceJaxb.getInterventionsByService(service);
-    }
 
     /**
      * GET — toutes les interventions (admin uniquement)

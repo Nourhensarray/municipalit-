@@ -3,19 +3,18 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import axios from "axios";
 
-const ListInterventions = ({ service }) => {
+const ListInterventions = () => {
   const [interventions, setInterventions] = useState([]);
-  const { token } = useContext(AuthContext); // token JWT
+  const { token } = useContext(AuthContext);
 
   useEffect(() => {
     fetchInterventions();
-  }, [service]);
+  }, []);
 
   const fetchInterventions = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/interventions", {
+      const response = await axios.get("http://localhost:8080/api/interventions/my-service", {
         headers: { Authorization: `Bearer ${token}` },
-        params: { service } // filtrer côté backend
       });
 
       const data = Array.isArray(response.data) ? response.data : response.data.interventions || [];
@@ -31,13 +30,13 @@ const ListInterventions = ({ service }) => {
       await axios.delete(`http://localhost:8080/api/interventions/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      fetchInterventions(); // rafraîchir la liste
+      fetchInterventions();
     }
   };
 
   return (
     <div>
-      <h2>Liste des interventions ({service})</h2>
+      <h2>Liste des interventions</h2>
 
       <div style={{ marginBottom: "15px" }}>
         <Link to="/add" style={{ marginLeft: "15px" }}>Ajouter une intervention</Link>
@@ -55,6 +54,7 @@ const ListInterventions = ({ service }) => {
             <th>Urgence</th>
             <th>Priorité</th>
             <th>Techniciens</th>
+            <th>Matériels</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -70,6 +70,11 @@ const ListInterventions = ({ service }) => {
               <td>{inter.urgence}</td>
               <td>{inter.priorite}</td>
               <td>{(inter.techniciens || []).map(t => `${t.nom} ${t.prenom}`).join(", ")}</td>
+              <td>
+                {(inter.materiels && inter.materiels.length > 0)
+                  ? inter.materiels.map(m => `${m.categorie} (x${m.quantite})`).join(", ")
+                  : "—"}
+              </td>
               <td>
                 <div className="action-buttons">
                   <Link to={`/edit/${inter.idInter}`}>

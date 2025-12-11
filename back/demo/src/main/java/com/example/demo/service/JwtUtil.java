@@ -11,12 +11,12 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    // Clé secrète d'au moins 64 caractères pour HS512
-    private final String secret = "MaSuperCleTresSecretePourMunicipal12345678901234567890";
-    private final long expiration = 86400000L; // 1 jour en millisecondes
+    // Clé secrète EXACTEMENT 64 bytes pour HS512 (512 bits)
+    private final String secret = "Q9xL29KfjS82Ksd93Jf92Kfs82Kfs920Dks92Kfs82Kfs92Kdls92Kfls92Kfs82";
+
+    private final long expiration = 86400000L; // 1 jour
 
     private Key getSigningKey() {
-        // Convertit la clé en bytes UTF-8 et crée une clé sécurisée pour HS512
         return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
@@ -24,6 +24,7 @@ public class JwtUtil {
         return Jwts.builder()
                 .setSubject(email)
                 .claim("service", service)
+                .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS512)
                 .compact();
@@ -44,6 +45,11 @@ public class JwtUtil {
     public String extractService(String token) {
         return extractClaims(token).get("service", String.class);
     }
+    public String extractUsername(String token) {
+        return extractClaims(token).getSubject();
+    }
+
+    
 
     public boolean isTokenExpired(String token) {
         return extractClaims(token).getExpiration().before(new Date());

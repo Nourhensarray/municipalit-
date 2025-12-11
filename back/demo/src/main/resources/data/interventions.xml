@@ -2,25 +2,24 @@
 <interventions xmlns:ns2="http://example.com/personne">
     <intervention urgence="Moyenne" priorite="Moyenne">
         <datePrevue>2025-12-10</datePrevue>
-        <service>voirie</service>
         <idInter>2</idInter>
+        <service>voirie</service>
         <localisation>tuni</localisation>
         <statut>planifiée</statut>
         <type>Réparation</type>
         <efficacite>Moyenne</efficacite>
-        <techniciens>
-            <technicien>
-                <ns2:id>2</ns2:id>
-                <ns2:nom>Trabelsi</ns2:nom>
-                <ns2:prenom>Nourhen</ns2:prenom>
-                <interventions/>
-            </technicien>
-        </techniciens>
+        <techniciens/>
+        <materiels>
+            <materiel>
+                <idM>0</idM>
+                <quantite>1</quantite>
+            </materiel>
+        </materiels>
     </intervention>
     <intervention urgence="Moyenne" priorite="Moyenne">
         <datePrevue>2025-12-03</datePrevue>
-        <service>securite</service>
         <idInter>3</idInter>
+        <service>securite</service>
         <localisation>mahdi</localisation>
         <statut>planifiée</statut>
         <type>Réparation</type>
@@ -37,8 +36,8 @@
     </intervention>
     <intervention urgence="Moyenne" priorite="Moyenne">
         <datePrevue>2025-12-11</datePrevue>
-        <service>voirie</service>
         <idInter>4</idInter>
+        <service>voirie</service>
         <localisation>tunis</localisation>
         <statut>en_cours</statut>
         <type>Rép</type>
@@ -55,25 +54,57 @@
     </intervention>
     <intervention urgence="Élevée" priorite="Élevée">
         <datePrevue>2025-12-25</datePrevue>
-        <service>transport</service>
         <idInter>5</idInter>
+        <service>transport</service>
         <localisation>tunis</localisation>
         <statut>planifiée</statut>
-        <type>Réparatio</type>
+        <type>Réparationnnnn</type>
         <efficacite>Moyenne</efficacite>
         <techniciens>
+            <technicien>
+                <ns2:id>1</ns2:id>
+                <ns2:nom>Ben Salah</ns2:nom>
+                <ns2:prenom>Aya</ns2:prenom>
+                <ns2:specialite>Informatique</ns2:specialite>
+                <interventions/>
+            </technicien>
             <technicien>
                 <ns2:id>2</ns2:id>
                 <ns2:nom>Trabelsi</ns2:nom>
                 <ns2:prenom>Nourhen</ns2:prenom>
+                <ns2:specialite>Électricité</ns2:specialite>
                 <interventions/>
             </technicien>
         </techniciens>
+        <materiels>
+            <materiel>
+                <idM>0</idM>
+                <etat>Neuf</etat>
+                <quantite>0</quantite>
+                <valeur></valeur>
+            </materiel>
+            <materiel>
+                <idM>1</idM>
+                <categorie>Outils</categorie>
+                <dateAchat>2025-01-10</dateAchat>
+                <etat>Neuf</etat>
+                <quantite>1</quantite>
+                <valeur>100</valeur>
+            </materiel>
+            <materiel>
+                <idM>2</idM>
+                <categorie>Pièces</categorie>
+                <dateAchat>2024-11-05</dateAchat>
+                <etat>Usé</etat>
+                <quantite>3</quantite>
+                <valeur>50</valeur>
+            </materiel>
+        </materiels>
     </intervention>
     <intervention urgence="Moyenne" priorite="Moyenne">
         <datePrevue>2025-12-04</datePrevue>
-        <service>transport</service>
         <idInter>7</idInter>
+        <service>transport</service>
         <localisation>mahdia</localisation>
         <statut>planifiée</statut>
         <type>Réparatio</type>
@@ -94,5 +125,169 @@
                 <interventions/>
             </technicien>
         </techniciens>
+        <materiels>
+            <materiel>
+                <idM>1</idM>
+                <categorie>Outils</categorie>
+                <dateAchat>2025-01-10</dateAchat>
+                <etat>Neuf</etat>
+                <quantite>1</quantite>
+                <valeur>100</valeur>
+            </materiel>
+        </materiels>
+    </intervention>
+    <intervention urgence="Moyenne" priorite="Faible">
+        <datePrevue>2026-01-10</datePrevue>
+        <idInter>8</idInter>
+        <service>transport</service>
+        <localisation>mahdi</localisation>
+        <statut>planifiée</statut>
+        <type>Réparatio</type>
+        <efficacite>Moyenne</efficacite>
+        <techniciens>
+            <technicien>
+                <ns2:id>2</ns2:id>
+                <ns2:nom>Trabelsi</ns2:nom>
+                <ns2:prenom>Nourhen</ns2:prenom>
+                <ns2:specialite>Électricité</ns2:specialite>
+                <interventions/>
+            </technicien>
+        </techniciens>
+        <materiels/>
+    </intervention>
+    <intervention urgence="Moyenne" priorite="Moyenne">
+        <datePrevue>2025-12-05</datePrevue>
+        <idInter>9</idInter>
+        <service>transport</service>
+        <localisation>mahdi</localisation>
+        <statut>planifiée</statut>
+        <type>Réparationnnnn</type>
+        <efficacite>Moyenne</efficacite>
+        <techniciens>
+            <technicien>
+                <ns2:id>2</ns2:id>
+                <ns2:nom>Trabelsi</ns2:nom>
+                <ns2:prenom>Nourhen</ns2:prenom>
+                <ns2:specialite>Électricité</ns2:specialite>
+                <interventions/>
+            </technicien>
+        </techniciens>
+        <materiels>
+            <materiel>
+                <idM>1</idM>
+                <categorie>Outils</categorie>
+                <dateAchat>2025-01-10</dateAchat>
+                <etat>Neuf</etat>
+                <quantite>0</quantite>
+                <valeur>100</valeur>
+            </materiel>
+            <materiel>
+                <idM>2</idM>
+                <categorie>Pièces</categorie>
+                <dateAchat>2024-11-05</dateAchat>
+                <etat>Usé</etat>
+                <quantite>0</quantite>
+                <valeur>50</valeur>
+            </materiel>
+        </materiels>
+    </intervention>
+    <intervention urgence="Moyenne" priorite="Moyenne">
+        <datePrevue>2025-12-26</datePrevue>
+        <idInter>10</idInter>
+        <service>transport</service>
+        <localisation>tunis</localisation>
+        <statut>planifiée</statut>
+        <type>Réparatio</type>
+        <efficacite>Moyenne</efficacite>
+        <techniciens/>
+        <materiels>
+            <materiel>
+                <idM>1</idM>
+                <categorie>Outils</categorie>
+                <dateAchat>2025-01-10</dateAchat>
+                <etat>Neuf</etat>
+                <quantite>0</quantite>
+                <valeur>100</valeur>
+            </materiel>
+            <materiel>
+                <idM>2</idM>
+                <categorie>Pièces</categorie>
+                <dateAchat>2024-11-05</dateAchat>
+                <etat>Usé</etat>
+                <quantite>0</quantite>
+                <valeur>50</valeur>
+            </materiel>
+        </materiels>
+    </intervention>
+    <intervention urgence="Moyenne" priorite="Moyenne">
+        <datePrevue>2025-12-12</datePrevue>
+        <idInter>11</idInter>
+        <service>transport</service>
+        <localisation>tunis</localisation>
+        <statut>planifiée</statut>
+        <type>Rép</type>
+        <efficacite>Moyenne</efficacite>
+        <techniciens>
+            <technicien>
+                <ns2:id>2</ns2:id>
+                <ns2:nom>Trabelsi</ns2:nom>
+                <ns2:prenom>Nourhen</ns2:prenom>
+                <ns2:specialite>Électricité</ns2:specialite>
+                <interventions/>
+            </technicien>
+            <technicien>
+                <ns2:id>1</ns2:id>
+                <ns2:nom>Ben Salah</ns2:nom>
+                <ns2:prenom>Aya</ns2:prenom>
+                <ns2:specialite>Informatique</ns2:specialite>
+                <interventions/>
+            </technicien>
+        </techniciens>
+        <materiels>
+            <materiel>
+                <idM>1</idM>
+                <categorie>Outils</categorie>
+                <dateAchat>2025-01-10</dateAchat>
+                <etat>Neuf</etat>
+                <quantite>0</quantite>
+                <valeur>100</valeur>
+            </materiel>
+            <materiel>
+                <idM>2</idM>
+                <categorie>Pièces</categorie>
+                <dateAchat>2024-11-05</dateAchat>
+                <etat>Usé</etat>
+                <quantite>0</quantite>
+                <valeur>50</valeur>
+            </materiel>
+        </materiels>
+    </intervention>
+    <intervention urgence="Moyenne" priorite="Moyenne">
+        <datePrevue>2025-12-20</datePrevue>
+        <idInter>12</idInter>
+        <service>transport</service>
+        <localisation>mahdia</localisation>
+        <statut>planifiée</statut>
+        <type>Réparation</type>
+        <efficacite>Moyenne</efficacite>
+        <techniciens/>
+        <materiels>
+            <materiel>
+                <idM>1</idM>
+                <categorie>Outils</categorie>
+                <dateAchat>2025-01-10</dateAchat>
+                <etat>Neuf</etat>
+                <quantite>0</quantite>
+                <valeur>100</valeur>
+            </materiel>
+            <materiel>
+                <idM>2</idM>
+                <categorie>Pièces</categorie>
+                <dateAchat>2024-11-05</dateAchat>
+                <etat>Usé</etat>
+                <quantite>0</quantite>
+                <valeur>50</valeur>
+            </materiel>
+        </materiels>
     </intervention>
 </interventions>

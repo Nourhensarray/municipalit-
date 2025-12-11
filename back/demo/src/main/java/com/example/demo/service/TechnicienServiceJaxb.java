@@ -13,12 +13,44 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+
+
 @Service
 public class TechnicienServiceJaxb {
+@Value("${techniciens.file:}")
+private String techniciensFilePath;
 
-    private File getFile() throws Exception {
-        return ResourceUtils.getFile("data/technicien.xml");
+private File getFile() throws Exception {
+    if (techniciensFilePath != null && !techniciensFilePath.isBlank()) {
+        File file = new File(techniciensFilePath);
+        
+        if (!file.isAbsolute()) {
+            file = file.getAbsoluteFile();
+        }
+        
+        File parent = file.getParentFile();
+        if (parent != null && !parent.exists()) {
+            parent.mkdirs();
+        }
+
+        if (!file.exists()) {
+            ClassPathResource resource = new ClassPathResource("data/technicien.xml");
+            if (resource.exists()) {
+                try (java.io.InputStream in = resource.getInputStream()) {
+                    java.nio.file.Files.copy(in, file.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+                    System.out.println("✅ technicien.xml copié vers: " + file.getAbsolutePath());
+                }
+            }
+        }
+        
+        System.out.println("📁 Fichier techniciens: " + file.getAbsolutePath());
+        return file;
     }
+
+    return ResourceUtils.getFile("data/technicien.xml");
+}
 
     // ======================
     // AJOUT INTERVENTION

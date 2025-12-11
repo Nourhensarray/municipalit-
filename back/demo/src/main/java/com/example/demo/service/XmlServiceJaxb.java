@@ -2,13 +2,16 @@ package com.example.demo.service;
 
 import com.example.demo.model.Intervention;
 import com.example.demo.model.Interventions;
+import com.example.demo.model.Materiel;
 import com.example.demo.model.Technicien;
-
+import com.example.demo.service.MaterielServiceJaxb;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
@@ -26,9 +29,45 @@ import javax.xml.transform.stream.StreamSource;
 public class XmlServiceJaxb {
     @Autowired
     private TechnicienServiceJaxb technicienService;
-    private File getFile() throws Exception {
-        return ResourceUtils.getFile("data/interventions.xml");
+    @Autowired
+    private MaterielServiceJaxb materielServiceJaxb; // injection correcte
+
+   @Value("${interventions.file:}")
+private String interventionsFilePath;
+
+private File getFile() throws Exception {
+    if (interventionsFilePath != null && !interventionsFilePath.isBlank()) {
+        File file = new File(interventionsFilePath);
+        
+        // Si c'est un chemin relatif (commençant par src/), le convertir en absolu
+        if (!file.isAbsolute()) {
+            file = file.getAbsoluteFile();
+        }
+        
+        File parent = file.getParentFile();
+        if (parent != null && !parent.exists()) {
+            parent.mkdirs();
+        }
+
+        if (!file.exists()) {
+            ClassPathResource resource = new ClassPathResource("data/interventions.xml");
+            if (resource.exists()) {
+                try (java.io.InputStream in = resource.getInputStream()) {
+                    java.nio.file.Files.copy(in, file.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+                    System.out.println("✅ interventions.xml copié vers: " + file.getAbsolutePath());
+                }
+            }
+        }
+        
+        System.out.println("📁 Fichier interventions: " + file.getAbsolutePath());
+        return file;
     }
+
+    // Fallback
+    ClassPathResource resource = new ClassPathResource("data/interventions.xml");
+    return resource.getFile();
+}
+    
 
     // ============================
     // LIRE TOUTES LES INTERVENTIONS
@@ -62,14 +101,15 @@ public class XmlServiceJaxb {
         }
 
         // ⭐ GÉNÉRER NOUVEL ID ⭐
-        int newId = list.getInterventions()
+        int newId = (int) (list.getInterventions()
                         .stream()
-                        .mapToInt(Intervention::getIdInter)
+                        .mapToLong(Intervention::getIdInter)
                         .max()
-                        .orElse(0) + 1;
+                        .orElse(0) + 1);
 
         intervention.setIdInter(newId);
-
+        List<Materiel> materiels = materielServiceJaxb.lister(); // ou filtrer ceux que tu veux
+intervention.setMateriels(materiels);
         // Ajouter intervention dans la liste générale
         list.getInterventions().add(intervention);
 
@@ -77,6 +117,7 @@ public class XmlServiceJaxb {
         for (Technicien t : intervention.getTechniciens()) {
             technicienService.addInterventionToTechnicien((int) t.getId(), intervention);
         }
+        
 
         // Sauvegarder
         marshaller.marshal(list, getFile());
@@ -132,6 +173,7 @@ public class XmlServiceJaxb {
                 i.setEfficacite(newData.getEfficacite());
                 i.setTechniciens(newData.getTechniciens());
                 i.setPriorite(newData.getPriorite());
+                i.setMateriels(newData.getMateriels());
                 i.setUrgence(newData.getUrgence());
                 updated = true;
                 break;
@@ -214,5 +256,6 @@ public List<Intervention> getInterventionsByService(String service) throws Excep
             .filter(i -> i.getService().equalsIgnoreCase(service))
             .toList();
 }
+
 
 }

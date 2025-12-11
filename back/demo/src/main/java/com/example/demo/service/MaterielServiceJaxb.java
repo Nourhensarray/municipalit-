@@ -72,7 +72,7 @@ public class MaterielServiceJaxb {
         if (list.getMateriels() == null)
             list.setMateriels(new ArrayList<>());
 
-        int newId = list.getMateriels().stream().mapToInt(Materiel::getIdM).max().orElse(0) + 1;
+        int newId = (int) (list.getMateriels().stream().mapToLong(Materiel::getIdM).max().orElse(0) + 1);
         materiel.setIdM(newId);
 
         list.getMateriels().add(materiel);
@@ -98,6 +98,8 @@ public class MaterielServiceJaxb {
                 m.setDateAchat(newData.getDateAchat());
                 m.setEtat(newData.getEtat());
                 m.setValeur(newData.getValeur());
+                m.setQuantite(newData.getQuantite());
+
                 updated = true;
                 break;
             }

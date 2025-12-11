@@ -61,27 +61,23 @@ const AddIntervention = () => {
   };
 
   const handleMaterielSelect = (e, mat) => {
-    const updated = e.target.checked
-      ? [...formData.materiels, { ...mat, quantite: mat.quantite || 1 }]
-      : formData.materiels.filter((m) => m.idM !== mat.idM);
-    setFormData({ ...formData, materiels: updated });
-  };
+  if (e.target.checked) {
+    // Toujours définir une quantité valide
+    const qty = mat.quantite && mat.quantite > 0 ? mat.quantite : 1;
 
-  const addMateriel = () => {
-    if (!newMateriel.categorie.trim() || newMateriel.quantite < 1) return;
-    const generatedId = Date.now();
-    const mat = { ...newMateriel, idM: generatedId };
-    setMaterielsList([...materielsList, mat]);
-    setFormData({ ...formData, materiels: [...formData.materiels, mat] });
-    setNewMateriel({ categorie: "", quantite: 1 });
-  };
-
-  const removeMateriel = (idM) => {
     setFormData({
       ...formData,
-      materiels: formData.materiels.filter((m) => m.idM !== idM),
+      materiels: [...formData.materiels, { ...mat, quantite: qty }],
     });
-  };
+  } else {
+    setFormData({
+      ...formData,
+      materiels: formData.materiels.filter((m) => m.idM !== mat.idM),
+    });
+  }
+};
+
+  
 
   const generateRandomLevel = () => {
     const options = ["Faible", "Moyenne", "Élevée"];
@@ -109,9 +105,9 @@ const AddIntervention = () => {
         ...formData,
         techniciens: techniciensObj,
         materiels: formData.materiels.map((m) => ({
-          idM: m.idM,
-          categorie: m.categorie,
-          quantite: m.quantite,
+          idM: m.idM || 0,
+          categorie: m.categorie || "",
+          quantite: Number.isInteger(m.quantite) && m.quantite > 0 ? m.quantite : 1,
           dateAchat: m.dateAchat || null,
           etat: m.etat || "Neuf",
           valeur: m.valeur || "",
@@ -194,43 +190,45 @@ const AddIntervention = () => {
           </div>
         </div>
 
-        {/* Materiels */}
-        <div className="materiels-container">
-          <label>Matériels :</label>
-          <div className="materiels-list">
-            {materielsList.map((m) => {
-              const selectedMateriel = formData.materiels.find((sm) => sm.idM === m.idM);
-              return (
-                <label key={m.idM} className="materiel-card">
-                  <input
-                    type="checkbox"
-                    checked={!!selectedMateriel}
-                    onChange={(e) => handleMaterielSelect(e, m)}
-                  />
-                  <span>{m.categorie}</span>
-                  {selectedMateriel && (
-                    <input
-                      type="number"
-                      min="1"
-                      value={selectedMateriel.quantite}
-                      onChange={(e) => {
-                        const qty = parseInt(e.target.value) || 1;
-                        setFormData({
-                          ...formData,
-                          materiels: formData.materiels.map((sm) =>
-                            sm.idM === m.idM ? { ...sm, quantite: qty } : sm
-                          ),
-                        });
-                      }}
-                      style={{ width: "60px" }}
-                    />
-                  )}
-                </label>
-              );
-            })}
-          </div>
+ {/* Matériels */}
+<div className="materiels-container">
+  <label>Matériels :</label>
+  <div className="materiels-list">
+    {materielsList.map((m) => {
+      const selectedMateriel = formData.materiels.find((sm) => sm.idM === m.idM);
+      return (
+        <label key={m.idM} className="materiel-card">
+          <input
+            type="checkbox"
+            checked={!!selectedMateriel}
+            onChange={(e) => handleMaterielSelect(e, m)}
+          />
+          <span>{m.categorie}</span>
+          {selectedMateriel && (
+  <input
+    type="number"
+    min="1"
+    value={selectedMateriel.quantite}
+    onChange={(e) => {
+      const value = e.target.value;
+      const qty = value === "" ? 1 : parseInt(value, 10);
+      setFormData({
+        ...formData,
+        materiels: formData.materiels.map((sm) =>
+          sm.idM === selectedMateriel.idM ? { ...sm, quantite: qty } : sm
+        ),
+      });
+    }}
+    style={{ width: "60px" }}
+  />
+)}
 
-        </div>
+        </label>
+      );
+    })}
+  </div>
+</div>
+
 
         {/* Mesures */}
         {["efficacite", "urgence", "priorite"].map((field) => (

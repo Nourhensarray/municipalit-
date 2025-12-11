@@ -7,7 +7,6 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import java.time.LocalDate;
-import java.util.Date;
 import com.example.demo.adapter.LocalDateAdapter;
 
 @XmlRootElement(name = "materiel")
@@ -21,9 +20,18 @@ public class Materiel {
     private LocalDate dateAchat;
 
     private String etat;
-    private int quantite;
+    private int quantite = 1;  // Valeur par défaut à 1
 
     private String valeur;
+
+    // === Constructors ===
+    public Materiel() {}
+
+    public Materiel(long idM, String categorie, int quantite) {
+        this.idM = idM;
+        this.categorie = categorie;
+        this.quantite = quantite > 0 ? quantite : 1;
+    }
 
     // === Getters et Setters ===
 
@@ -42,12 +50,12 @@ public class Materiel {
     public void setCategorie(String categorie) {
         this.categorie = categorie;
     }
-    public int getQuantite() {
+    public Integer getQuantite() {
     return quantite;
 }
 
-public void setQuantite(int quantite) {
-    this.quantite = quantite;
+public void setQuantite(Integer quantite) {
+    this.quantite = quantite != null && quantite > 0 ? quantite : 1;
 }
 
     public LocalDate getDateAchat() {
